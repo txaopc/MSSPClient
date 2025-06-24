@@ -1,0 +1,11 @@
+﻿Bước 1: Sử dụng công cụ: dotnet-svcutil cho .NET Core, với câu lệnh sau để tạo lớp proxy SOAP từ tệp WSDL:
+	dotnet-svcutil .\MSS_SignaturePort.wsdl --outputfile MSS_SignaturePort.cs
+
+Đảm bảo rằng bạn đã cài đặt công cụ dotnet-svcutil trước khi chạy lệnh này.
+Bạn có thể cài đặt nó bằng cách sử dụng lệnh sau:
+	dotnet tool install --global dotnet-svcutil
+Sau khi chạy lệnh, bạn sẽ có tệp MSS_SignaturePort.cs chứa lớp proxy để tương tác với dịch vụ SOAP.
+
+Bước 2: Tại các phương thức GetBindingForEndpoint thêm httpsBindingElement.RequireClientCertificate = true; để yêu cầu chứng thư số từ máy khách sử dụng để tạo kênh kết nối SSL/TLS hai chiều với SOAP WS.
+
+Bước 3: Thêm thuộc tính WrapperNamespace= "http://ae.mobile-id.vn/TS102204/etsi204" cho các lớp MSS_RegistrationRequest, MSS_RegistrationResponse, MSS_SignatureRequest, MSS_SignatureResponse và các lớp khác nếu còn trống, để đảm bảo rằng các lớp này được ánh xạ đúng với không gian tên trong WSDL, tránh lỗi "System.ServiceModel.FaultException: 'Cannot find dispatch method for {}MSS_Registration'"

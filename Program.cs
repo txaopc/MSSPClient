@@ -15,18 +15,18 @@ static async Task TestGetCertAsync()
 
     // Example of loading a certificate from a file
     var cert = X509CertificateLoader.LoadPkcs12FromFile(
-        "D:\\projects\\vgca\\MPKIToolKit\\Deploy\\mpkicrypto-v1.0.16-24.07.2023\\cert-ap-test\\3108937_VGCA_Application_Provider_certificate.p12",
+        "D:\\...\\3108937_VGCA_Application_Provider_certificate.p12",
         "123456"
     );
     Console.WriteLine($"Loaded certificate with thumbprint: {cert.Thumbprint}");
 
 
-    String ApId = "http://ap.mobile-id.vn/viettelca";        // Replace with your actual AP_ID
-    String ApPassword = "5Ge2GSA3";   // Replace with your actual AP_PWD
+    String ApId = "http://ap.mobile-id.vn/test";        // Replace with your actual AP_ID
+    String ApPassword = "......";   // Replace with your actual AP_PWD
 
     String msspId = "http://hmssp.mobile-id.vn"; // Replace with your actual MSSP_ID
 
-    String phoneNumber = "84962594424"; // Replace with actual phone number
+    String phoneNumber = "84xxxxxxxxx"; // Replace with actual phone number
 
     ServiceReference.MSS_RegistrationTypeClient client = new ServiceReference.MSS_RegistrationTypeClient();
     client.ClientCredentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultNetworkCredentials;
@@ -87,18 +87,18 @@ static async Task TestSign()
 {
     // Example of loading a certificate from a file
     var cert = X509CertificateLoader.LoadPkcs12FromFile(
-        "D:\\projects\\vgca\\MPKIToolKit\\Deploy\\mpkicrypto-v1.0.16-24.07.2023\\cert-ap-test\\3108937_VGCA_Application_Provider_certificate.p12",
+        "D:\\...\\3108937_VGCA_Application_Provider_certificate.p12",
         "123456"
     );
     Console.WriteLine($"Loaded certificate with thumbprint: {cert.Thumbprint}");
 
 
-    String ApId = "http://ap.mobile-id.vn/viettelca";        // Replace with your actual AP_ID
-    String ApPassword = "5Ge2GSA3";   // Replace with your actual AP_PWD
+    String ApId = "http://ap.mobile-id.vn/test";        // Replace with your actual AP_ID
+    String ApPassword = "........";   // Replace with your actual AP_PWD
 
     String msspId = "http://hmssp.mobile-id.vn"; // Replace with your actual MSSP_ID
 
-    String phoneNumber = "84962594424"; // Replace with actual phone number
+    String phoneNumber = "84xxxxxxxxx"; // Replace with actual phone number
 
     byte[] message = Encoding.UTF8.GetBytes("1234567890");
     string hashAlgorithm = "SHA256";
@@ -215,5 +215,3 @@ static async Task TestSign()
 await TestGetCertAsync();
 
 await TestSign();
-
-
