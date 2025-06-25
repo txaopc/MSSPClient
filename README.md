@@ -8,8 +8,6 @@ The MSSP Client provides a simple interface to interact with mobile signature se
 - Retrieve mobile user certificates
 - Create digital signatures using mobile devices
 
-This implementation is specifically designed for Vietnamese mobile signature infrastructure, supporting services like ViettelCA and other MSSP providers.
-
 ## Features
 
 - **Certificate Registration**: Retrieve their digital certificates
