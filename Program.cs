@@ -203,7 +203,7 @@ static async Task TestSign()
     var sigResp = await client.MSS_SignatureAsync(sigReq);
     Console.WriteLine($"Response Status: {sigResp.MSS_SignatureResp.Status.StatusCode.Value.ToString()}");
 
-    if (sigResp.MSS_SignatureResp.Status.StatusCode.Value == "408")
+    if (sigResp.MSS_SignatureResp.Status.StatusCode.Value == "502")
     {
         byte[] sigBuff = sigResp.MSS_SignatureResp.MSS_Signature.Item;
 
