@@ -224,7 +224,7 @@ static async Task CreateSignatureAsync()
 
     var response = await client.MSS_SignatureAsync(request);
     
-    if (response.MSS_SignatureResp.Status.StatusCode.Value == "408")
+    if (response.MSS_SignatureResp.Status.StatusCode.Value == "502")
     {
         // Success - signature created
         byte[] signature = response.MSS_SignatureResp.MSS_Signature.Item;
@@ -237,7 +237,8 @@ static async Task CreateSignatureAsync()
 
 Common status codes returned by the service:
 
-- **408**: Success - Operation completed successfully
+- **408**: Success - Operation certification reg completed successfully
+- **502**: Success - Operation signing completed successfully
 - **401**: Authentication failed
 - **402**: Authorization failed  
 - **403**: User not found or not registered
@@ -288,7 +289,7 @@ try
     
     switch (response.MSS_SignatureResp.Status.StatusCode.Value)
     {
-        case "408":
+        case "502":
             // Success
             break;
         case "405":
